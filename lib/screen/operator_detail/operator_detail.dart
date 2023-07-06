@@ -38,6 +38,7 @@ class _OperatorDetailScreenState extends State<OperatorDetailScreen> {
         height: 15,
       ));
     }
+    print(BASE + op.subClassIcon!);
     return Scaffold(
       body: Stack(children: [
         Container(
@@ -76,20 +77,38 @@ class _OperatorDetailScreenState extends State<OperatorDetailScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
+                  decoration: BoxDecoration(color: Colors.black),
                   width: size.width * 0.15,
                   margin: EdgeInsets.only(
                       top: size.height * 0.05, right: size.height * 0.02),
                   child: Image.network(BASE + op.classIcon!),
                 ),
                 Container(
-                  margin: EdgeInsets.only(right: size.height * 0.018),
+                  decoration: BoxDecoration(color: Colors.black),
+                  margin: EdgeInsets.only(right: size.height * 0.02),
                   width: size.width * 0.15,
                   child: Text(
                     op.classes![0],
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(fontSize: 12, color: Colors.white),
                     textAlign: TextAlign.center,
                   ),
-                )
+                ),
+                Container(
+                  decoration: BoxDecoration(color: Colors.black),
+                  width: size.width * 0.15,
+                  margin: EdgeInsets.only(right: size.height * 0.02),
+                  child: Image.network(BASE + op.subClassIcon!),
+                ),
+                Container(
+                  decoration: BoxDecoration(color: Colors.black),
+                  margin: EdgeInsets.only(right: size.height * 0.02),
+                  width: size.width * 0.15,
+                  child: Text(
+                    op.classes![1],
+                    style: TextStyle(fontSize: 12, color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ],
             )),
         Positioned(
@@ -107,6 +126,7 @@ class _OperatorDetailScreenState extends State<OperatorDetailScreen> {
                   child: Container(
                     height: 40,
                     width: 40,
+                    margin: EdgeInsets.only(top: 10),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(6),
@@ -118,7 +138,7 @@ class _OperatorDetailScreenState extends State<OperatorDetailScreen> {
                           BoxShadow(
                               offset: Offset(-15, -15),
                               blurRadius: 20,
-                              color: Colors.white)
+                              color: Colors.grey.withOpacity(0.10))
                         ]),
                     child: Image.network(
                         'https://gamepress.gg/sites/arknights/files/2019-10/0.png'),
@@ -133,6 +153,7 @@ class _OperatorDetailScreenState extends State<OperatorDetailScreen> {
                   child: Container(
                     height: 40,
                     width: 40,
+                    margin: EdgeInsets.only(top: 10),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(6),
@@ -144,7 +165,7 @@ class _OperatorDetailScreenState extends State<OperatorDetailScreen> {
                           BoxShadow(
                               offset: Offset(-15, -15),
                               blurRadius: 20,
-                              color: Colors.white)
+                              color: Colors.grey.withOpacity(0.10))
                         ]),
                     child: Image.network(
                         'https://gamepress.gg/sites/arknights/files/2019-10/1.png'),
@@ -159,6 +180,7 @@ class _OperatorDetailScreenState extends State<OperatorDetailScreen> {
                   child: Container(
                     height: 40,
                     width: 40,
+                    margin: EdgeInsets.only(top: 10),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(6),
@@ -170,7 +192,7 @@ class _OperatorDetailScreenState extends State<OperatorDetailScreen> {
                           BoxShadow(
                               offset: Offset(-15, -15),
                               blurRadius: 20,
-                              color: Colors.white)
+                              color: Colors.grey.withOpacity(0.10))
                         ]),
                     child: Image.network(
                         'https://gamepress.gg/sites/arknights/files/2019-10/2.png'),
@@ -190,40 +212,36 @@ class _OperatorDetailScreenState extends State<OperatorDetailScreen> {
                 'Range',
                 style: TextStyle(color: Colors.white, fontSize: 11),
               ),
-              Align(
-                alignment: Alignment.center,
-                child: Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(top: 5, left: 15),
-                  child: Column(children: [
-                    for (var i = 0; i < range!.length; i++)
-                      Row(
-                        children: [
-                          for (var j = 0; j < range[i].length; j++)
-                            if (range[i][j] == 'unit')
-                              Container(
-                                width: 10,
-                                height: 10,
-                                decoration: BoxDecoration(color: Colors.white),
-                              )
-                            else if (range[i][j] == 'attackable')
-                              Container(
-                                width: 10,
-                                height: 10,
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        width: 0.5, color: Colors.white)),
-                              )
-                            else
-                              SizedBox(
-                                width: 10,
-                                height: 10,
-                              )
-                        ],
-                      ),
-                  ]),
-                ),
-              )
+              Container(
+                margin: EdgeInsets.only(top: 5, left: 15),
+                child: Column(children: [
+                  for (var i = 0; i < range![0].length; i++)
+                    Row(
+                      children: [
+                        for (var j = 0; j < range.length; j++)
+                          if (range[j][i] == 'unit')
+                            Container(
+                              width: 10,
+                              height: 10,
+                              decoration: BoxDecoration(color: Colors.white),
+                            )
+                          else if (range[j][i] == 'attackable')
+                            Container(
+                              width: 10,
+                              height: 10,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 0.5, color: Colors.white)),
+                            )
+                          else
+                            SizedBox(
+                              width: 10,
+                              height: 10,
+                            )
+                      ],
+                    ),
+                ]),
+              ),
             ]),
           ),
         )

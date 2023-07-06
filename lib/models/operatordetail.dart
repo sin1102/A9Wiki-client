@@ -31,9 +31,10 @@ class OperatorDetail {
   String? updatedAt;
   String? icon;
   String? attackType;
-  String? classIcon;
   String? faction;
-  List<BaseSkill>? baseskill;
+  String? classIcon;
+  List<Baseskill>? baseskill;
+  String? subClassIcon;
 
   OperatorDetail(
       {this.opId,
@@ -68,11 +69,12 @@ class OperatorDetail {
       this.updatedAt,
       this.icon,
       this.attackType,
-      this.classIcon,
       this.faction,
-      this.baseskill});
+      this.classIcon,
+      this.baseskill,
+      this.subClassIcon});
 
-  OperatorDetail.fromJson(dynamic json) {
+  OperatorDetail.fromJson(json) {
     opId = json['opId'];
     name = json['name'];
     rarity = json['rarity'];
@@ -145,14 +147,15 @@ class OperatorDetail {
     updatedAt = json['updatedAt'];
     icon = json['icon'];
     attackType = json['attack_type'];
-    classIcon = json['classIcon'];
     faction = json['faction'];
+    classIcon = json['classIcon'];
     if (json['baseskill'] != null) {
-      baseskill = <BaseSkill>[];
+      baseskill = <Baseskill>[];
       json['baseskill'].forEach((v) {
-        baseskill!.add(new BaseSkill.fromJson(v));
+        baseskill!.add(new Baseskill.fromJson(v));
       });
     }
+    subClassIcon = json['subClassIcon'];
   }
 }
 
@@ -398,14 +401,12 @@ class E0max {
 }
 
 class Costs {
-  String? icon;
   String? name;
   int? amount;
 
-  Costs({this.icon, this.name, this.amount});
+  Costs({this.name, this.amount});
 
   Costs.fromJson(json) {
-    icon = json['icon'];
     name = json['name'];
     amount = json['amount'];
   }
@@ -441,14 +442,21 @@ class Talents {
 
 class Skills {
   String? name;
+  String? skillIcon;
   List<Variations>? variations;
   String? skillCharge;
   String? skillActivation;
 
-  Skills({this.name, this.variations, this.skillCharge, this.skillActivation});
+  Skills(
+      {this.name,
+      this.skillIcon,
+      this.variations,
+      this.skillCharge,
+      this.skillActivation});
 
   Skills.fromJson(json) {
     name = json['name'];
+    skillIcon = json['skillIcon'];
     if (json['variations'] != null) {
       variations = <Variations>[];
       json['variations'].forEach((v) {
@@ -488,14 +496,16 @@ class Variations {
 
 class Module {
   String? name;
+  String? icon;
   String? trust;
   String? availability;
   List<Levels>? levels;
 
-  Module({this.name, this.trust, this.availability, this.levels});
+  Module({this.name, this.icon, this.trust, this.availability, this.levels});
 
   Module.fromJson(json) {
     name = json['name'];
+    icon = json['icon'];
     trust = json['trust'];
     availability = json['availability'];
     if (json['levels'] != null) {
@@ -559,30 +569,12 @@ class TalentChanges {
 class Attributes {
   String? maxHp;
   String? atk;
-  String? def;
 
-  Attributes({this.maxHp, this.atk, this.def});
+  Attributes({this.maxHp, this.atk});
 
   Attributes.fromJson(json) {
     maxHp = json['max_hp'];
     atk = json['atk'];
-    def = json['def'];
-  }
-}
-
-class BaseSkill {
-  String? name;
-  String? level;
-  String? effects;
-  String? building;
-
-  BaseSkill({this.name, this.level, this.effects, this.building});
-
-  BaseSkill.fromJson(json) {
-    name = json['name'];
-    level = json['level'];
-    effects = json['effects'];
-    building = json['building'];
   }
 }
 
@@ -595,5 +587,23 @@ class Art {
   Art.fromJson(json) {
     name = json['name'];
     link = json['link'];
+  }
+}
+
+class Baseskill {
+  String? name;
+  String? icon;
+  String? level;
+  String? effects;
+  String? building;
+
+  Baseskill({this.name, this.icon, this.level, this.effects, this.building});
+
+  Baseskill.fromJson(json) {
+    name = json['name'];
+    icon = json['icon'];
+    level = json['level'];
+    effects = json['effects'];
+    building = json['building'];
   }
 }
