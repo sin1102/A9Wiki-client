@@ -1,129 +1,106 @@
 class OperatorDetail {
-  String? opId;
-  String? name;
-  int? rarity;
-  String? alter;
-  String? va;
-  String? biography;
-  String? description;
-  String? quote;
-  Voicelines? voicelines;
-  Lore? lore;
-  List<String>? affiliation;
-  List<String>? classes;
-  List<String>? tags;
-  List<Range>? range;
-  Statistics? statistics;
-  String? trait;
-  List<Costs>? costs;
-  List<Potential>? potential;
-  Potential? trust;
-  List<Talents>? talents;
-  List<Skills>? skills;
-  List<Module>? module;
-  bool? headhunting;
-  bool? recruitable;
-  bool? limited;
-  List<Art>? art;
-  String? availability;
-  String? url;
   String? createdAt;
   String? updatedAt;
-  String? icon;
-  String? attackType;
-  String? faction;
-  String? classIcon;
+  String? url;
+  ReleaseDates? releaseDates;
+  String? availability;
+  List<Art>? art;
+  bool? limited;
+  bool? recruitable;
+  bool? headhunting;
   List<Baseskill>? baseskill;
+  List<Module>? module;
+  List<Skills>? skills;
+  List<Talents>? talents;
+  Trust? trust;
+  List<Potential>? potential;
+  List<CostElite>? costsElite;
+  List<Cost810>? costs810;
+  List<Cost17>? costs17;
+  String? trait;
+  Statistics? statistics;
+  List<Range>? range;
+  List<String>? tags;
+  List<String>? classes;
+  String? faction;
   String? subClassIcon;
+  String? classIcon;
+  List<String>? affiliation;
+  Lore? lore;
+  Voicelines? voicelines;
+  String? quote;
+  String? description;
+  String? biography;
+  String? attackType;
+  String? va;
+  String? alter;
+  int? rarity;
+  String? icon;
+  String? name;
+  String? opId;
 
   OperatorDetail(
-      {this.opId,
-      this.name,
-      this.rarity,
-      this.alter,
-      this.va,
-      this.biography,
-      this.description,
-      this.quote,
-      this.voicelines,
-      this.lore,
-      this.affiliation,
-      this.classes,
-      this.tags,
-      this.range,
-      this.statistics,
-      this.trait,
-      this.costs,
-      this.potential,
-      this.trust,
-      this.talents,
-      this.skills,
-      this.module,
-      this.headhunting,
-      this.recruitable,
-      this.limited,
-      this.art,
-      this.availability,
-      this.url,
-      this.createdAt,
+      {this.createdAt,
       this.updatedAt,
-      this.icon,
-      this.attackType,
-      this.faction,
-      this.classIcon,
+      this.url,
+      this.releaseDates,
+      this.availability,
+      this.art,
+      this.limited,
+      this.recruitable,
+      this.headhunting,
       this.baseskill,
-      this.subClassIcon});
+      this.module,
+      this.skills,
+      this.talents,
+      this.trust,
+      this.potential,
+      this.costsElite,
+      this.costs810,
+      this.costs17,
+      this.trait,
+      this.statistics,
+      this.range,
+      this.tags,
+      this.classes,
+      this.faction,
+      this.subClassIcon,
+      this.classIcon,
+      this.affiliation,
+      this.lore,
+      this.voicelines,
+      this.quote,
+      this.description,
+      this.biography,
+      this.attackType,
+      this.va,
+      this.alter,
+      this.rarity,
+      this.icon,
+      this.name,
+      this.opId});
 
   OperatorDetail.fromJson(json) {
-    opId = json['opId'];
-    name = json['name'];
-    rarity = json['rarity'];
-    alter = json['alter'];
-    va = json['va'];
-    biography = json['biography'];
-    description = json['description'];
-    quote = json['quote'];
-    voicelines = json['voicelines'] != null
-        ? new Voicelines.fromJson(json['voicelines'])
+    createdAt = json['createdAt'];
+    updatedAt = json['updatedAt'];
+    url = json['url'];
+    releaseDates = json['release_dates'] != null
+        ? new ReleaseDates.fromJson(json['release_dates'])
         : null;
-    lore = json['lore'] != null ? new Lore.fromJson(json['lore']) : null;
-    affiliation = json['affiliation'].cast<String>();
-    classes = json['class'].cast<String>();
-    tags = json['tags'].cast<String>();
-    if (json['range'] != null) {
-      range = <Range>[];
-      json['range'].forEach((v) {
-        range!.add(new Range.fromJson(v));
+    availability = json['availability'];
+    if (json['art'] != null) {
+      art = <Art>[];
+      json['art'].forEach((v) {
+        art!.add(new Art.fromJson(v));
       });
     }
-    statistics = json['statistics'] != null
-        ? new Statistics.fromJson(json['statistics'])
-        : null;
-    trait = json['trait'];
-    if (json['costs'] != null) {
-      costs = <Costs>[];
-      json['costs'].forEach((v) {
-        costs!.add(new Costs.fromJson(v));
-      });
-    }
-    if (json['potential'] != null) {
-      potential = <Potential>[];
-      json['potential'].forEach((v) {
-        potential!.add(new Potential.fromJson(v));
-      });
-    }
-    trust =
-        json['trust'] != null ? new Potential.fromJson(json['trust']) : null;
-    if (json['talents'] != null) {
-      talents = <Talents>[];
-      json['talents'].forEach((v) {
-        talents!.add(new Talents.fromJson(v));
-      });
-    }
-    if (json['skills'] != null) {
-      skills = <Skills>[];
-      json['skills'].forEach((v) {
-        skills!.add(new Skills.fromJson(v));
+    limited = json['Limited'];
+    recruitable = json['recruitable'];
+    headhunting = json['headhunting'];
+    if (json['baseskill'] != null) {
+      baseskill = <Baseskill>[];
+      json['baseskill'].forEach((v) {
+        baseskill!.add(new Baseskill.fromJson(v));
       });
     }
     if (json['module'] != null) {
@@ -132,30 +109,496 @@ class OperatorDetail {
         module!.add(new Module.fromJson(v));
       });
     }
-    headhunting = json['headhunting'];
-    recruitable = json['recruitable'];
-    limited = json['Limited'];
-    if (json['art'] != null) {
-      art = <Art>[];
-      json['art'].forEach((v) {
-        art!.add(new Art.fromJson(v));
+    if (json['skills'] != null) {
+      skills = <Skills>[];
+      json['skills'].forEach((v) {
+        skills!.add(new Skills.fromJson(v));
       });
     }
-    availability = json['availability'];
-    url = json['url'];
-    createdAt = json['createdAt'];
-    updatedAt = json['updatedAt'];
-    icon = json['icon'];
-    attackType = json['attack_type'];
+    if (json['talents'] != null) {
+      talents = <Talents>[];
+      json['talents'].forEach((v) {
+        talents!.add(new Talents.fromJson(v));
+      });
+    }
+    trust = json['trust'] != null ? new Trust.fromJson(json['trust']) : null;
+    if (json['potential'] != null) {
+      potential = <Potential>[];
+      json['potential'].forEach((v) {
+        potential!.add(new Potential.fromJson(v));
+      });
+    }
+    if (json['costs_elite'] != null) {
+      costsElite = <CostElite>[];
+      json['costs_elite'].forEach((v) {
+        costsElite!.add(new CostElite.fromJson(v));
+      });
+    }
+    if (json['costs810'] != null) {
+      costs810 = <Cost810>[];
+      json['costs810'].forEach((v) {
+        costs810!.add(Cost810.fromJson(v));
+      });
+    }
+    if (json['costs17'] != null) {
+      costs17 = <Cost17>[];
+      json['costs17'].forEach((v) {
+        costs17!.add(new Cost17.fromJson(v));
+      });
+    }
+    trait = json['trait'];
+    statistics = json['statistics'] != null
+        ? new Statistics.fromJson(json['statistics'])
+        : null;
+    if (json['range'] != null) {
+      range = <Range>[];
+      json['range'].forEach((v) {
+        range!.add(new Range.fromJson(v));
+      });
+    }
+    tags = json['tags'].cast<String>();
+    classes = json['class'].cast<String>();
     faction = json['faction'];
+    subClassIcon = json['subClassIcon'];
     classIcon = json['classIcon'];
-    if (json['baseskill'] != null) {
-      baseskill = <Baseskill>[];
-      json['baseskill'].forEach((v) {
-        baseskill!.add(new Baseskill.fromJson(v));
+    affiliation = json['affiliation'].cast<String>();
+    lore = json['lore'] != null ? new Lore.fromJson(json['lore']) : null;
+    voicelines = json['voicelines'] != null
+        ? new Voicelines.fromJson(json['voicelines'])
+        : null;
+    quote = json['quote'];
+    description = json['description'];
+    biography = json['biography'];
+    attackType = json['attack_type'];
+    va = json['va'];
+    alter = json['alter'];
+    rarity = json['rarity'];
+    icon = json['icon'];
+    name = json['name'];
+    opId = json['opId'];
+  }
+}
+
+class ReleaseDates {
+  String? cn;
+  String? global;
+
+  ReleaseDates({this.cn, this.global});
+
+  ReleaseDates.fromJson(json) {
+    cn = json['cn'];
+    global = json['global'];
+  }
+}
+
+class Art {
+  String? name;
+  String? link;
+
+  Art({this.name, this.link});
+
+  Art.fromJson(json) {
+    name = json['name'];
+    link = json['link'];
+  }
+}
+
+class Baseskill {
+  String? name;
+  String? icon;
+  String? level;
+  String? effects;
+  String? building;
+
+  Baseskill({this.name, this.icon, this.level, this.effects, this.building});
+
+  Baseskill.fromJson(json) {
+    name = json['name'];
+    icon = json['icon'];
+    level = json['level'];
+    effects = json['effects'];
+    building = json['building'];
+  }
+}
+
+class Potential {
+  String? name;
+  String? value;
+
+  Potential({this.name, this.value});
+
+  Potential.fromJson(json) {
+    name = json['name'];
+    value = json['value'];
+  }
+}
+
+class Module {
+  String? name;
+  String? icon;
+  String? trust;
+  String? availability;
+  List<Levels>? levels;
+
+  Module({this.name, this.icon, this.trust, this.availability, this.levels});
+
+  Module.fromJson(json) {
+    name = json['name'];
+    icon = json['icon'];
+    trust = json['trust'];
+    availability = json['availability'];
+    if (json['levels'] != null) {
+      levels = <Levels>[];
+      json['levels'].forEach((v) {
+        levels!.add(new Levels.fromJson(v));
       });
     }
-    subClassIcon = json['subClassIcon'];
+  }
+}
+
+class Levels {
+  int? level;
+  String? trait;
+  List<TalentChanges>? talentChanges;
+  List<String>? unlock;
+  List<Cost>? cost;
+  Attributes? attributes;
+
+  Levels(
+      {this.level,
+      this.trait,
+      this.talentChanges,
+      this.unlock,
+      this.cost,
+      this.attributes});
+
+  Levels.fromJson(json) {
+    level = json['level'];
+    trait = json['trait'];
+    if (json['talent_changes'] != null) {
+      talentChanges = <TalentChanges>[];
+      json['talent_changes'].forEach((v) {
+        talentChanges!.add(new TalentChanges.fromJson(v));
+      });
+    }
+    unlock = json['unlock'].cast<String>();
+    if (json['cost'] != null) {
+      cost = <Cost>[];
+      json['cost'].forEach((v) {
+        cost!.add(new Cost.fromJson(v));
+      });
+    }
+    attributes = json['attributes'] != null
+        ? new Attributes.fromJson(json['attributes'])
+        : null;
+  }
+}
+
+class TalentChanges {
+  String? name;
+  String? value;
+  String? elite;
+  String? potential;
+  int? moduleLevel;
+
+  TalentChanges(
+      {this.name, this.value, this.elite, this.potential, this.moduleLevel});
+
+  TalentChanges.fromJson(json) {
+    name = json['name'];
+    value = json['value'];
+    elite = json['elite'];
+    potential = json['potential'];
+    moduleLevel = json['module_level'];
+  }
+}
+
+class Cost17 {
+  String? lvl;
+  List<Cost>? cost;
+
+  Cost17({this.lvl, this.cost});
+
+  Cost17.fromJson(json) {
+    lvl = json['lvl'];
+    if (json['cost'] != null) {
+      cost = <Cost>[];
+      json['cost'].forEach((v) {
+        cost!.add(new Cost.fromJson(v));
+      });
+    }
+  }
+}
+
+class Cost810 {
+  int? lvl;
+  String? time;
+  List<Cost>? cost;
+
+  Cost810({this.lvl, this.time, this.cost});
+
+  Cost810.fromJson(json) {
+    lvl = json['lvl'];
+    time = json['time'];
+    if (json['cost'] != null) {
+      cost = <Cost>[];
+      json['cost'].forEach((v) {
+        cost!.add(new Cost.fromJson(v));
+      });
+    }
+  }
+}
+
+class CostElite {
+  int? elite;
+  List<Cost>? cost;
+
+  CostElite({this.elite, this.cost});
+
+  CostElite.fromJson(json) {
+    elite = json['elite'];
+    if (json['cost'] != null) {
+      cost = <Cost>[];
+      json['cost'].forEach((v) {
+        cost!.add(new Cost.fromJson(v));
+      });
+    }
+  }
+}
+
+class Cost {
+  String? icon;
+  String? amount;
+
+  Cost({this.icon, this.amount});
+
+  Cost.fromJson(json) {
+    icon = json['icon'];
+    amount = json['amount'];
+  }
+}
+
+class Attributes {
+  String? maxHp;
+  String? atk;
+  String? def;
+
+  Attributes({this.maxHp, this.atk, this.def});
+
+  Attributes.fromJson(json) {
+    maxHp = json['max_hp'];
+    atk = json['atk'];
+    def = json['def'];
+  }
+}
+
+class Skills {
+  String? name;
+  String? skillIcon;
+  List<Variations>? variations;
+  String? skillCharge;
+  String? skillActivation;
+
+  Skills(
+      {this.name,
+      this.skillIcon,
+      this.variations,
+      this.skillCharge,
+      this.skillActivation});
+
+  Skills.fromJson(json) {
+    name = json['name'];
+    skillIcon = json['skillIcon'];
+    if (json['variations'] != null) {
+      variations = <Variations>[];
+      json['variations'].forEach((v) {
+        variations!.add(new Variations.fromJson(v));
+      });
+    }
+    skillCharge = json['skill_charge'];
+    skillActivation = json['skill_activation'];
+  }
+}
+
+class Variations {
+  dynamic level;
+  String? description;
+  String? spCost;
+  String? initialSp;
+  String? duration;
+  dynamic range;
+
+  Variations(
+      {this.level,
+      this.description,
+      this.spCost,
+      this.initialSp,
+      this.duration,
+      this.range});
+
+  Variations.fromJson(json) {
+    level = json['level'];
+    description = json['description'];
+    spCost = json['sp_cost'];
+    initialSp = json['initial_sp'];
+    duration = json['duration'];
+    range = json['range'];
+  }
+}
+
+class Talents {
+  String? elite;
+  String? potential;
+  String? talentName;
+  String? description;
+
+  Talents({this.elite, this.potential, this.talentName, this.description});
+
+  Talents.fromJson(json) {
+    elite = json['elite'];
+    potential = json['potential'];
+    talentName = json['talentName'];
+    description = json['description'];
+  }
+}
+
+class Trust {
+  String? name;
+  String? value;
+
+  Trust({this.name, this.value});
+
+  Trust.fromJson(json) {
+    name = json['name'];
+    value = json['value'];
+  }
+}
+
+class Statistics {
+  Base? base;
+  E0max? e0max;
+  E0max? e1max;
+  E0max? e2max;
+
+  Statistics({this.base, this.e0max, this.e1max, this.e2max});
+
+  Statistics.fromJson(json) {
+    base = json['base'] != null ? new Base.fromJson(json['base']) : null;
+    e0max = json['e0max'] != null ? new E0max.fromJson(json['e0max']) : null;
+    e1max = json['e1max'] != null ? new E0max.fromJson(json['e1max']) : null;
+    e2max = json['e2max'] != null ? new E0max.fromJson(json['e2max']) : null;
+  }
+}
+
+class Base {
+  String? hp;
+  String? atk;
+  String? def;
+  String? resist;
+  String? deploy;
+  String? cost;
+  String? interval;
+  String? block;
+
+  Base(
+      {this.hp,
+      this.atk,
+      this.def,
+      this.resist,
+      this.deploy,
+      this.cost,
+      this.interval,
+      this.block});
+
+  Base.fromJson(json) {
+    hp = json['hp'];
+    atk = json['atk'];
+    def = json['def'];
+    resist = json['resist'];
+    deploy = json['deploy'];
+    cost = json['cost'];
+    interval = json['interval'];
+    block = json['block'];
+  }
+}
+
+class E0max {
+  String? hp;
+  String? atk;
+  String? def;
+  String? block;
+
+  E0max({this.hp, this.atk, this.def, this.block});
+
+  E0max.fromJson(json) {
+    hp = json['hp'];
+    atk = json['atk'];
+    def = json['def'];
+    block = json['block'];
+  }
+}
+
+class Range {
+  String? elite;
+  List<List>? range;
+
+  Range({this.elite, this.range});
+
+  Range.fromJson(json) {
+    elite = json['elite'];
+    if (json['range'] != null) {
+      range = <List>[];
+      json['range'].forEach((v) {
+        range!.add(v);
+      });
+    }
+  }
+}
+
+class Lore {
+  String? gender;
+  String? placeOfBirth;
+  String? birthday;
+  String? race;
+  String? height;
+  String? combatExperience;
+  String? infectionStatus;
+  String? physicalStrength;
+  String? mobility;
+  String? physiologicalEndurance;
+  String? tacticalPlanning;
+  String? combatSkill;
+  String? originiumAdaptability;
+
+  Lore(
+      {this.gender,
+      this.placeOfBirth,
+      this.birthday,
+      this.race,
+      this.height,
+      this.combatExperience,
+      this.infectionStatus,
+      this.physicalStrength,
+      this.mobility,
+      this.physiologicalEndurance,
+      this.tacticalPlanning,
+      this.combatSkill,
+      this.originiumAdaptability});
+
+  Lore.fromJson(json) {
+    gender = json['gender'];
+    placeOfBirth = json['place_of_birth'];
+    birthday = json['birthday'];
+    race = json['race'];
+    height = json['height'];
+    combatExperience = json['combat_experience'];
+    infectionStatus = json['infection_status'];
+    physicalStrength = json['physical_strength'];
+    mobility = json['mobility'];
+    physiologicalEndurance = json['physiological_endurance'];
+    tacticalPlanning = json['tactical_planning'];
+    combatSkill = json['combat_skill'];
+    originiumAdaptability = json['originium_adaptability'];
   }
 }
 
@@ -269,341 +712,5 @@ class Voicelines {
     trustTap = json['trust_tap'];
     title = json['title'];
     greeting = json['greeting'];
-  }
-}
-
-class Lore {
-  String? gender;
-  String? placeOfBirth;
-  String? birthday;
-  String? race;
-  String? height;
-  String? combatExperience;
-  String? infectionStatus;
-  String? physicalStrength;
-  String? mobility;
-  String? physiologicalEndurance;
-  String? tacticalPlanning;
-  String? combatSkill;
-  String? originiumAdaptability;
-
-  Lore(
-      {this.gender,
-      this.placeOfBirth,
-      this.birthday,
-      this.race,
-      this.height,
-      this.combatExperience,
-      this.infectionStatus,
-      this.physicalStrength,
-      this.mobility,
-      this.physiologicalEndurance,
-      this.tacticalPlanning,
-      this.combatSkill,
-      this.originiumAdaptability});
-
-  Lore.fromJson(json) {
-    gender = json['gender'];
-    placeOfBirth = json['place_of_birth'];
-    birthday = json['birthday'];
-    race = json['race'];
-    height = json['height'];
-    combatExperience = json['combat_experience'];
-    infectionStatus = json['infection_status'];
-    physicalStrength = json['physical_strength'];
-    mobility = json['mobility'];
-    physiologicalEndurance = json['physiological_endurance'];
-    tacticalPlanning = json['tactical_planning'];
-    combatSkill = json['combat_skill'];
-    originiumAdaptability = json['originium_adaptability'];
-  }
-}
-
-class Range {
-  String? elite;
-  List<List>? range;
-
-  Range({this.elite, this.range});
-
-  Range.fromJson(json) {
-    elite = json['elite'];
-    if (json['range'] != null) {
-      range = <List>[];
-      json['range'].forEach((v) {
-        range!.add(v);
-      });
-    }
-  }
-}
-
-class Statistics {
-  Base? base;
-  E0max? e0max;
-  E0max? e1max;
-  E0max? e2max;
-
-  Statistics({this.base, this.e0max, this.e1max, this.e2max});
-
-  Statistics.fromJson(json) {
-    base = json['base'] != null ? new Base.fromJson(json['base']) : null;
-    e0max = json['e0max'] != null ? new E0max.fromJson(json['e0max']) : null;
-    e1max = json['e1max'] != null ? new E0max.fromJson(json['e1max']) : null;
-    e2max = json['e2max'] != null ? new E0max.fromJson(json['e2max']) : null;
-  }
-}
-
-class Base {
-  String? hp;
-  String? atk;
-  String? def;
-  String? resist;
-  String? deploy;
-  String? cost;
-  String? interval;
-  String? block;
-
-  Base(
-      {this.hp,
-      this.atk,
-      this.def,
-      this.resist,
-      this.deploy,
-      this.cost,
-      this.interval,
-      this.block});
-
-  Base.fromJson(json) {
-    hp = json['hp'];
-    atk = json['atk'];
-    def = json['def'];
-    resist = json['resist'];
-    deploy = json['deploy'];
-    cost = json['cost'];
-    interval = json['interval'];
-    block = json['block'];
-  }
-}
-
-class E0max {
-  String? hp;
-  String? atk;
-  String? def;
-  String? block;
-
-  E0max({this.hp, this.atk, this.def, this.block});
-
-  E0max.fromJson(json) {
-    hp = json['hp'];
-    atk = json['atk'];
-    def = json['def'];
-    block = json['block'];
-  }
-}
-
-class Costs {
-  String? name;
-  int? amount;
-
-  Costs({this.name, this.amount});
-
-  Costs.fromJson(json) {
-    name = json['name'];
-    amount = json['amount'];
-  }
-}
-
-class Potential {
-  String? name;
-  String? value;
-
-  Potential({this.name, this.value});
-
-  Potential.fromJson(json) {
-    name = json['name'];
-    value = json['value'];
-  }
-}
-
-class Talents {
-  String? elite;
-  String? potential;
-  String? talentName;
-  String? description;
-
-  Talents({this.elite, this.potential, this.talentName, this.description});
-
-  Talents.fromJson(json) {
-    elite = json['elite'];
-    potential = json['potential'];
-    talentName = json['talentName'];
-    description = json['description'];
-  }
-}
-
-class Skills {
-  String? name;
-  String? skillIcon;
-  List<Variations>? variations;
-  String? skillCharge;
-  String? skillActivation;
-
-  Skills(
-      {this.name,
-      this.skillIcon,
-      this.variations,
-      this.skillCharge,
-      this.skillActivation});
-
-  Skills.fromJson(json) {
-    name = json['name'];
-    skillIcon = json['skillIcon'];
-    if (json['variations'] != null) {
-      variations = <Variations>[];
-      json['variations'].forEach((v) {
-        variations!.add(new Variations.fromJson(v));
-      });
-    }
-    skillCharge = json['skill_charge'];
-    skillActivation = json['skill_activation'];
-  }
-}
-
-class Variations {
-  dynamic level;
-  String? description;
-  String? spCost;
-  String? initialSp;
-  String? duration;
-  dynamic range;
-
-  Variations(
-      {this.level,
-      this.description,
-      this.spCost,
-      this.initialSp,
-      this.duration,
-      this.range});
-
-  Variations.fromJson(json) {
-    level = json['level'];
-    description = json['description'];
-    spCost = json['sp_cost'];
-    initialSp = json['initial_sp'];
-    duration = json['duration'];
-    range = json['range'];
-  }
-}
-
-class Module {
-  String? name;
-  String? icon;
-  String? trust;
-  String? availability;
-  List<Levels>? levels;
-
-  Module({this.name, this.icon, this.trust, this.availability, this.levels});
-
-  Module.fromJson(json) {
-    name = json['name'];
-    icon = json['icon'];
-    trust = json['trust'];
-    availability = json['availability'];
-    if (json['levels'] != null) {
-      levels = <Levels>[];
-      json['levels'].forEach((v) {
-        levels!.add(new Levels.fromJson(v));
-      });
-    }
-  }
-}
-
-class Levels {
-  int? level;
-  String? trait;
-  List<TalentChanges>? talentChanges;
-  List<String>? unlock;
-  Attributes? attributes;
-
-  Levels(
-      {this.level,
-      this.trait,
-      this.talentChanges,
-      this.unlock,
-      this.attributes});
-
-  Levels.fromJson(json) {
-    level = json['level'];
-    trait = json['trait'];
-    if (json['talent_changes'] != null) {
-      talentChanges = <TalentChanges>[];
-      json['talent_changes'].forEach((v) {
-        talentChanges!.add(new TalentChanges.fromJson(v));
-      });
-    }
-    unlock = json['unlock'].cast<String>();
-    attributes = json['attributes'] != null
-        ? new Attributes.fromJson(json['attributes'])
-        : null;
-  }
-}
-
-class TalentChanges {
-  String? name;
-  String? value;
-  String? elite;
-  String? potential;
-  int? moduleLevel;
-
-  TalentChanges(
-      {this.name, this.value, this.elite, this.potential, this.moduleLevel});
-
-  TalentChanges.fromJson(json) {
-    name = json['name'];
-    value = json['value'];
-    elite = json['elite'];
-    potential = json['potential'];
-    moduleLevel = json['module_level'];
-  }
-}
-
-class Attributes {
-  String? maxHp;
-  String? atk;
-
-  Attributes({this.maxHp, this.atk});
-
-  Attributes.fromJson(json) {
-    maxHp = json['max_hp'];
-    atk = json['atk'];
-  }
-}
-
-class Art {
-  String? name;
-  String? link;
-
-  Art({this.name, this.link});
-
-  Art.fromJson(json) {
-    name = json['name'];
-    link = json['link'];
-  }
-}
-
-class Baseskill {
-  String? name;
-  String? icon;
-  String? level;
-  String? effects;
-  String? building;
-
-  Baseskill({this.name, this.icon, this.level, this.effects, this.building});
-
-  Baseskill.fromJson(json) {
-    name = json['name'];
-    icon = json['icon'];
-    level = json['level'];
-    effects = json['effects'];
-    building = json['building'];
   }
 }
