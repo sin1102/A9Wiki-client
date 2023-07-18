@@ -478,19 +478,25 @@ class Statistics {
   Base? base;
   E0max? e0max;
   E0max? e1max;
+  E0max? e1min;
   E0max? e2max;
+  E0max? e2min;
 
-  Statistics({this.base, this.e0max, this.e1max, this.e2max});
+  Statistics(
+      {this.base, this.e0max, this.e1max, this.e1min, this.e2max, this.e2min});
 
   Statistics.fromJson(json) {
     base = json['base'] != null ? new Base.fromJson(json['base']) : null;
     e0max = json['e0max'] != null ? new E0max.fromJson(json['e0max']) : null;
     e1max = json['e1max'] != null ? new E0max.fromJson(json['e1max']) : null;
+    e1min = json['e1min'] != null ? new E0max.fromJson(json['e1min']) : null;
     e2max = json['e2max'] != null ? new E0max.fromJson(json['e2max']) : null;
+    e2min = json['e2min'] != null ? new E0max.fromJson(json['e2min']) : null;
   }
 }
 
 class Base {
+  String? lv;
   String? hp;
   String? atk;
   String? def;
@@ -501,7 +507,8 @@ class Base {
   String? block;
 
   Base(
-      {this.hp,
+      {this.lv,
+      this.hp,
       this.atk,
       this.def,
       this.resist,
@@ -511,6 +518,7 @@ class Base {
       this.block});
 
   Base.fromJson(json) {
+    lv = json['lv'];
     hp = json['hp'];
     atk = json['atk'];
     def = json['def'];
@@ -523,14 +531,18 @@ class Base {
 }
 
 class E0max {
+  String? cost;
+  String? lv;
   String? hp;
   String? atk;
   String? def;
   String? block;
 
-  E0max({this.hp, this.atk, this.def, this.block});
+  E0max({this.cost, this.lv, this.hp, this.atk, this.def, this.block});
 
   E0max.fromJson(json) {
+    cost = json['cost'];
+    lv = json['lv'];
     hp = json['hp'];
     atk = json['atk'];
     def = json['def'];

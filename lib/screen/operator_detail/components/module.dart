@@ -24,6 +24,11 @@ class _ModuleState extends State<Modules> {
     'https://gamepress.gg/sites/arknights/files/2022-06/img_stg3%5B1%5D.png'
   ];
   var currLv = [0, 0, 0];
+  var currColor = [
+    Colors.black.withOpacity(0.5),
+    Colors.black.withOpacity(0.25)
+  ];
+  var coloInd = List.generate(3, (i) => List.filled(3, 0));
 
   @override
   Widget build(BuildContext context) {
@@ -112,6 +117,9 @@ class _ModuleState extends State<Modules> {
                                 GestureDetector(
                                   onTap: () {
                                     setState(() {
+                                      coloInd[i]
+                                          .fillRange(0, coloInd[i].length, 0);
+                                      coloInd[i][0] = 1;
                                       currLv[i] = 0;
                                     });
                                   },
@@ -120,7 +128,7 @@ class _ModuleState extends State<Modules> {
                                     height: widget.size.height * 0.05,
                                     padding: EdgeInsets.all(5),
                                     decoration: BoxDecoration(
-                                        color: Colors.black.withOpacity(0.5),
+                                        color: currColor[coloInd[i][0]],
                                         borderRadius: BorderRadius.circular(5)),
                                     child: Row(
                                       children: [
@@ -143,6 +151,9 @@ class _ModuleState extends State<Modules> {
                                 GestureDetector(
                                   onTap: () {
                                     setState(() {
+                                      coloInd[i]
+                                          .fillRange(0, coloInd[i].length, 0);
+                                      coloInd[i][1] = 1;
                                       currLv[i] = 1;
                                     });
                                   },
@@ -152,7 +163,7 @@ class _ModuleState extends State<Modules> {
                                     padding: EdgeInsets.all(5),
                                     margin: EdgeInsets.only(left: 10),
                                     decoration: BoxDecoration(
-                                        color: Colors.black.withOpacity(0.5),
+                                        color: currColor[coloInd[i][1]],
                                         borderRadius: BorderRadius.circular(5)),
                                     child: Row(
                                       children: [
@@ -175,6 +186,9 @@ class _ModuleState extends State<Modules> {
                                 GestureDetector(
                                   onTap: () {
                                     setState(() {
+                                      coloInd[i]
+                                          .fillRange(0, coloInd[i].length, 0);
+                                      coloInd[i][2] = 1;
                                       currLv[i] = 2;
                                     });
                                   },
@@ -184,7 +198,7 @@ class _ModuleState extends State<Modules> {
                                     margin: EdgeInsets.only(left: 10),
                                     padding: EdgeInsets.all(5),
                                     decoration: BoxDecoration(
-                                        color: Colors.black.withOpacity(0.5),
+                                        color: currColor[coloInd[i][2]],
                                         borderRadius: BorderRadius.circular(5)),
                                     child: Row(
                                       children: [

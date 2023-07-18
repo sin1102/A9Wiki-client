@@ -18,6 +18,12 @@ class _SkillState extends State<Skill> {
   int currSkill = 0;
   int currLv = 0;
   bool show = false;
+  var btnColors = [
+    Colors.black.withOpacity(0.5),
+    Colors.black.withOpacity(0.25)
+  ];
+  var currSColor = [0, 0, 0];
+  var currLvlColor = List.generate(10, (index) => 1);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -43,6 +49,8 @@ class _SkillState extends State<Skill> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
+                        currSColor.fillRange(0, currSColor.length, 0);
+                        currSColor[0] = 1;
                         currSkill = 0;
                       });
                     },
@@ -50,7 +58,7 @@ class _SkillState extends State<Skill> {
                       width: widget.size.width * 0.275,
                       height: widget.size.height * 0.05,
                       decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.5),
+                          color: btnColors[currSColor[0]],
                           borderRadius: BorderRadius.circular(20)),
                       child: Center(
                         child: Text(
@@ -63,6 +71,8 @@ class _SkillState extends State<Skill> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
+                        currSColor.fillRange(0, currSColor.length, 0);
+                        currSColor[1] = 1;
                         currSkill = 1;
                       });
                     },
@@ -71,7 +81,7 @@ class _SkillState extends State<Skill> {
                       height: widget.size.height * 0.05,
                       margin: EdgeInsets.only(left: 10),
                       decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.5),
+                          color: btnColors[currSColor[1]],
                           borderRadius: BorderRadius.circular(20)),
                       child: Center(
                         child: Text(
@@ -84,6 +94,8 @@ class _SkillState extends State<Skill> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
+                        currSColor.fillRange(0, currSColor.length, 0);
+                        currSColor[2] = 1;
                         currSkill = 2;
                       });
                     },
@@ -92,7 +104,7 @@ class _SkillState extends State<Skill> {
                       height: widget.size.height * 0.05,
                       margin: EdgeInsets.only(left: 10),
                       decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.5),
+                          color: btnColors[currSColor[2]],
                           borderRadius: BorderRadius.circular(20)),
                       child: Center(
                         child: Text(
@@ -120,6 +132,8 @@ class _SkillState extends State<Skill> {
                       GestureDetector(
                         onTap: () {
                           setState(() {
+                            currLvlColor.fillRange(0, currLvlColor.length, 1);
+                            currLvlColor[i] = 0;
                             currLv = i;
                           });
                         },
@@ -127,7 +141,7 @@ class _SkillState extends State<Skill> {
                           width: widget.size.width * 0.17,
                           padding: EdgeInsets.all(5),
                           decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.25),
+                              color: btnColors[currLvlColor[i]],
                               borderRadius: BorderRadius.circular(5)),
                           child: Text(
                             (i + 1).toString(),
@@ -139,6 +153,8 @@ class _SkillState extends State<Skill> {
                       GestureDetector(
                         onTap: () {
                           setState(() {
+                            currLvlColor.fillRange(0, currLvlColor.length, 1);
+                            currLvlColor[i] = 0;
                             currLv = i;
                           });
                         },
@@ -146,7 +162,7 @@ class _SkillState extends State<Skill> {
                           width: widget.size.width * 0.17,
                           padding: EdgeInsets.all(5),
                           decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.25),
+                              color: btnColors[currLvlColor[i]],
                               borderRadius: BorderRadius.circular(5)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -11,9 +11,33 @@ class Stats extends StatefulWidget {
 }
 
 class _StatsState extends State<Stats> {
-  E0max currStat = E0max(hp: '0', atk: '0', block: '0', def: '0');
+  E0max currStat = E0max();
+  var btnColors = [
+    Colors.black.withOpacity(0.5),
+    Colors.black.withOpacity(0.35)
+  ];
+  var currEColor = [0, 0, 0];
+  int lvl = 1;
+  int currE = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    E0max base = E0max(
+        hp: widget.base!.base!.hp,
+        atk: widget.base!.base!.atk,
+        def: widget.base!.base!.def,
+        block: widget.base!.base!.block);
+    stat(base, widget.base!.e0max!, int.parse(widget.base!.e0max!.lv!), 1);
+  }
+
   @override
   Widget build(BuildContext context) {
+    E0max base = E0max(
+        hp: widget.base!.base!.hp,
+        atk: widget.base!.base!.atk,
+        def: widget.base!.base!.def,
+        block: widget.base!.base!.block);
     return Column(
       children: [
         Container(
@@ -42,15 +66,19 @@ class _StatsState extends State<Stats> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
-                        currStat = widget.base!.e0max!;
-                        print(currStat.atk);
+                        currEColor.fillRange(0, currEColor.length, 0);
+                        currEColor[0] = 1;
+                        currE = 0;
+                        lvl = 1;
+                        stat(base, widget.base!.e0max!,
+                            int.parse(widget.base!.e0max!.lv!), lvl);
                       });
                     },
                     child: Container(
                       width: widget.size.width * 0.275,
                       height: widget.size.height * 0.05,
                       decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.5),
+                          color: btnColors[currEColor[0]],
                           borderRadius: BorderRadius.circular(20)),
                       child: Center(
                         child: Text(
@@ -63,8 +91,12 @@ class _StatsState extends State<Stats> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
-                        currStat = widget.base!.e1max!;
-                        print(currStat.atk);
+                        currEColor.fillRange(0, currEColor.length, 0);
+                        currEColor[1] = 1;
+                        currE = 1;
+                        lvl = 1;
+                        stat(widget.base!.e1min!, widget.base!.e1max!,
+                            int.parse(widget.base!.e1max!.lv!), lvl);
                       });
                     },
                     child: Container(
@@ -72,7 +104,7 @@ class _StatsState extends State<Stats> {
                       height: widget.size.height * 0.05,
                       margin: EdgeInsets.only(left: 10),
                       decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.5),
+                          color: btnColors[currEColor[1]],
                           borderRadius: BorderRadius.circular(20)),
                       child: Center(
                         child: Text(
@@ -85,8 +117,12 @@ class _StatsState extends State<Stats> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
-                        currStat = widget.base!.e2max!;
-                        print(currStat.atk);
+                        currEColor.fillRange(0, currEColor.length, 0);
+                        currEColor[2] = 1;
+                        currE = 2;
+                        lvl = 1;
+                        stat(widget.base!.e2min!, widget.base!.e2max!,
+                            int.parse(widget.base!.e2max!.lv!), lvl);
                       });
                     },
                     child: Container(
@@ -94,7 +130,7 @@ class _StatsState extends State<Stats> {
                       height: widget.size.height * 0.05,
                       margin: EdgeInsets.only(left: 10),
                       decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.5),
+                          color: btnColors[currEColor[2]],
                           borderRadius: BorderRadius.circular(20)),
                       child: Center(
                         child: Text(
@@ -108,6 +144,54 @@ class _StatsState extends State<Stats> {
               ),
               SizedBox(
                 height: widget.size.height * 0.01,
+              ),
+              Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(left: 10),
+                    padding: EdgeInsets.all(5),
+                    height: widget.size.height * 0.03,
+                    width: widget.size.width * 0.2,
+                    decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Text(
+                      "Level: $lvl",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  SizedBox(
+                    width: widget.size.width * 0.6,
+                    child: Slider(
+                      value: lvl.toDouble(),
+                      onChanged: (newVal) {
+                        setState(() {
+                          lvl = newVal.toInt();
+                          switch (currE) {
+                            case 0:
+                              stat(base, widget.base!.e0max!,
+                                  int.parse(widget.base!.e0max!.lv!), lvl);
+                              break;
+                            case 1:
+                              stat(widget.base!.e1min!, widget.base!.e1max!,
+                                  int.parse(widget.base!.e1max!.lv!), lvl);
+                              break;
+                            case 2:
+                              stat(widget.base!.e2min!, widget.base!.e2max!,
+                                  int.parse(widget.base!.e2max!.lv!), lvl);
+                              break;
+                            default:
+                          }
+                        });
+                      },
+                      min: 1,
+                      max: double.parse(currStat.lv!),
+                      thumbColor: Colors.black.withOpacity(0.5),
+                      activeColor: Colors.black.withOpacity(0.4),
+                      inactiveColor: Colors.black.withOpacity(0.15),
+                    ),
+                  ),
+                ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -256,7 +340,7 @@ class _StatsState extends State<Stats> {
                           ),
                           Center(
                             child: Text(
-                              widget.base!.base!.cost!,
+                              currStat.cost!,
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
@@ -317,5 +401,26 @@ class _StatsState extends State<Stats> {
         )
       ],
     );
+  }
+
+  void stat(E0max statMin, E0max statMax, int maxLV, int currLv) {
+    currStat.lv = maxLV.toString();
+    currStat.atk = linear(
+            currLv, 1, maxLV, int.parse(statMin.atk!), int.parse(statMax.atk!))
+        .toString();
+    currStat.def = linear(
+            currLv, 1, maxLV, int.parse(statMin.def!), int.parse(statMax.def!))
+        .toString();
+    currStat.hp =
+        linear(currLv, 1, maxLV, int.parse(statMin.hp!), int.parse(statMax.hp!))
+            .toString();
+    currStat.block = statMin.block;
+    currStat.cost = statMax.cost;
+  }
+
+  int linear(num currLv, num minLV, num maxLV, num minStat, num maxStat) {
+    var a = (maxStat - minStat) / (maxLV - minLV);
+    var b = maxStat - a * maxLV;
+    return (a * currLv + b).toInt();
   }
 }
