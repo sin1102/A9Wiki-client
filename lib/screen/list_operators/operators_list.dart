@@ -113,8 +113,7 @@ class _OperatorsListState extends State<OperatorsList> {
 
   Future<void> fetchOp() async {
     print('fetop called');
-    final url =
-        'http://192.168.1.2:3000/operators?resPerPage=10&currPage=$page&opName=$opname';
+    final url = '$DOMAIN/operators?resPerPage=10&currPage=$page&opName=$opname';
     final uri = Uri.parse(url);
     print(uri);
     final response = await http.get(uri);

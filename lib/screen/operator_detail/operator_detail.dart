@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
 
+import '../../constaint.dart';
 import 'components/screen.dart';
 
 class OperatorDetailScreen extends StatefulWidget {
@@ -76,7 +77,7 @@ class _OperatorDetailScreenState extends State<OperatorDetailScreen> {
     OperatorDetail op = OperatorDetail();
     final id = widget.opId;
     print('fetTags called');
-    final url = 'http://192.168.1.2:3000/operators/id/$id';
+    final url = '$DOMAIN/operators/id/$id';
     final uri = Uri.parse(url);
     final response = await http.get(uri);
     if (response.statusCode == 200) {

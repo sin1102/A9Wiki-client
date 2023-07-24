@@ -1,6 +1,7 @@
 import 'package:a9wiki/screen/events/events.dart';
 import 'package:a9wiki/screen/list_operators/operators_list.dart';
 import 'package:a9wiki/screen/recruit/recruit.dart';
+import 'package:a9wiki/screen/tier_list/tier_list.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -14,7 +15,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   //String title = 'Operators';
   int tab = 0;
-  List<Widget> screen = [OperatorsList(), RecruitScreen(), EventScreen()];
+  List<Widget> screen = [
+    OperatorsList(),
+    RecruitScreen(),
+    TierListScreen(),
+    EventScreen()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +66,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     });
                     print(value);
                     break;
+                  case 3:
+                    setState(() {
+                      tab = value;
+                      //title = 'Events';
+                    });
+                    print(value);
+                    break;
                   default:
                 }
               },
@@ -71,6 +84,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 GButton(
                   icon: Icons.recent_actors_outlined,
                   text: 'Recruit',
+                ),
+                GButton(
+                  icon: Icons.bar_chart_sharp,
+                  text: 'Tier List',
                 ),
                 GButton(
                   icon: Icons.event,

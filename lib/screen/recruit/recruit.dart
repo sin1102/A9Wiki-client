@@ -166,16 +166,15 @@ class _RecruitScreenState extends State<RecruitScreen> {
     if (recruit.isNotEmpty) {
       switch (recruit.length) {
         case 1:
-          url =
-              'http://192.168.1.2:3000/operators/recruit/%7Btag%7D?tag1=${recruit[0]}';
+          url = '$DOMAIN/operators/recruit/%7Btag%7D?tag1=${recruit[0]}';
           break;
         case 2:
           url =
-              'http://192.168.1.2:3000/operators/recruit/%7Btag%7D?tag1=${recruit[0]}&tag2=${recruit[1]}';
+              '$DOMAIN/operators/recruit/%7Btag%7D?tag1=${recruit[0]}&tag2=${recruit[1]}';
           break;
         case 3:
           url =
-              'http://192.168.1.2:3000/operators/recruit/%7Btag%7D?tag1=${recruit[0]}&tag2=${recruit[1]}&tag3=${recruit[2]}';
+              '$DOMAIN/operators/recruit/%7Btag%7D?tag1=${recruit[0]}&tag2=${recruit[1]}&tag3=${recruit[2]}';
           break;
         default:
       }
@@ -201,7 +200,7 @@ class _RecruitScreenState extends State<RecruitScreen> {
 
   Future<void> fetchTags() async {
     print('fetTags called');
-    const url = 'http://192.168.1.2:3000/tags';
+    const url = '$DOMAIN/tags';
     final uri = Uri.parse(url);
     print(uri);
     final response = await http.get(uri);

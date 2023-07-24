@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:a9wiki/constaint.dart';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
@@ -64,7 +65,7 @@ class _AlterState extends State<Alter> {
   Future<Operators> fetchAlter() async {
     Operators alter = Operators();
     final alterName = widget.alterName;
-    final url = 'http://192.168.1.2:3000/operators/name/$alterName';
+    final url = '$DOMAIN/operators/name/$alterName';
     print(url);
     final uri = Uri.parse(url);
     final response = await http.get(uri);
