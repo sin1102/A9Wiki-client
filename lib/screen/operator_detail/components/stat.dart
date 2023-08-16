@@ -364,7 +364,7 @@ class _StatsState extends State<Stats> {
                           ),
                           Center(
                             child: Text(
-                              currStat.block!,
+                              currStat.block!.replaceAll('block:', ''),
                               style: TextStyle(color: Colors.white),
                             ),
                           ),

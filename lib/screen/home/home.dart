@@ -1,4 +1,4 @@
-import 'package:a9wiki/screen/events/events.dart';
+import 'package:a9wiki/screen/banners/banners.dart';
 import 'package:a9wiki/screen/list_operators/operators_list.dart';
 import 'package:a9wiki/screen/recruit/recruit.dart';
 import 'package:a9wiki/screen/tier_list/tier_list.dart';
@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
     OperatorsList(),
     RecruitScreen(),
     TierListScreen(),
-    EventScreen()
+    BannerScreen(),
   ];
 
   @override
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   case 3:
                     setState(() {
                       tab = value;
-                      //title = 'Events';
+                      //title = 'Banners';
                     });
                     print(value);
                     break;
@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 GButton(
                   icon: Icons.event,
-                  text: 'Events',
+                  text: 'Banners',
                 ),
               ]),
         ),

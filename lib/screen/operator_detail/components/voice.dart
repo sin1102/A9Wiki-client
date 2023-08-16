@@ -36,16 +36,16 @@ class Voice extends StatelessWidget {
                 borderRadius: BorderRadius.circular(5)),
             child: Table(
               border: TableBorder.all(width: 1, color: Colors.white),
+              defaultVerticalAlignment: TableCellVerticalAlignment.middle,
               children: [
                 TableRow(children: [
-                  Center(
-                      child: Container(
-                    margin: EdgeInsets.all(5),
+                  Align(
+                    alignment: Alignment.center,
                     child: Text(
                       'Appointed as Assistant',
                       style: TextStyle(color: Colors.white),
                     ),
-                  )),
+                  ),
                   Center(
                       child: Container(
                     margin: EdgeInsets.all(5),
