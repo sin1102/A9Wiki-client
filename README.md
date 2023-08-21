@@ -1,16 +1,51 @@
-# a9wiki
-
-A new Flutter project.
+<p align="center">
+  <img src="media/skadi.webp"/>
+</p>
+# Arknights Wiki
+Looking for operators information, recruit operators, gacha simulation or perhap tier list? This app will help you!
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+For help getting started with Flutter, view our online
+[documentation](https://flutter.io/).
 
-A few resources to get you started if this is your first Flutter project:
+## Operators List
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<table>
+<tr>
+<th><img src="media/list_1.jpg" width="320"/></th>
+<th><img src="media/list_2.jpg" width="320"/></th>
+</tr>
+</table>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Operators Detail
+
+<img src="media/detail.gif" width="320"/>
+
+## Recruit Operators
+
+<table>
+<tr>
+<th><img src="media/recruit_1.jpg" width="320"/></th>
+<th><img src="media/recruit_2.jpg" width="320"/></th>
+</tr>
+</table>
+
+## Tier List
+
+<table>
+<tr>
+<th><img src="media/tier_1.jpg" width="320"/></th>
+<th><img src="media/tier_2.jpg" width="320"/></th>
+</tr>
+</table>
+
+## Gacha Simulator
+
+<table>
+<tr>
+<th><img src="media/banner.jpg" width="320"/></th>
+<th><img src="media/sim_1.jpg" width="320"/></th>
+<th><img src="media/sim_2.jpg" width="320"/></th>
+</tr>
+</table>
