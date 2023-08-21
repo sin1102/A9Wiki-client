@@ -1,7 +1,9 @@
+# Arknights wiki
+
 <p align="center">
   <img src="media/skadi.webp"/>
 </p>
-# Arknights Wiki
+
 Looking for operators information, recruit operators, gacha simulation or perhap tier list? This app will help you!
 
 ## Getting Started
