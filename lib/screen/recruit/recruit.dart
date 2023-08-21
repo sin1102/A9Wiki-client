@@ -130,7 +130,7 @@ class _RecruitScreenState extends State<RecruitScreen> {
                                       borderRadius: BorderRadius.circular(20)),
                                   child: Center(
                                       child: Text(
-                                    tag.tagname![index],
+                                    capitalize(tag.tagname![index]),
                                     style: TextStyle(
                                         color: colorText[stat[i][j]],
                                         fontSize: 13),
@@ -220,5 +220,9 @@ class _RecruitScreenState extends State<RecruitScreen> {
     } else {
       print('unexpected res');
     }
+  }
+
+  String capitalize(String s) {
+    return s[0].toUpperCase() + s.substring(1);
   }
 }

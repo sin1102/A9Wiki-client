@@ -51,3 +51,7 @@ For help getting started with Flutter, view our online
 <th><img src="media/sim_2.jpg" width="320"/></th>
 </tr>
 </table>
+
+### Development / Setup
+
+Follow the [project setup for building A9wiki](https://github.com/sin1102/A9Wiki-client/wiki/Project-setup-for-building-A9Wiki) instructions to get the project running.
